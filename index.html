@@ -31,7 +31,6 @@ h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);fon
 h1 span{color:var(--gold)}
 .sub{color:var(--muted);font-size:.85rem;font-style:italic;margin:.3rem 0 0}
 
-/* SEARCH PANEL */
 .search-panel{max-width:1200px;margin:0 auto;padding:.5rem 1.5rem 0}
 .search-row{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
 .search-input-wrap{flex:1;min-width:200px;display:flex;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.25rem .25rem .25rem 1rem;box-shadow:var(--shadow)}
@@ -39,17 +38,14 @@ h1 span{color:var(--gold)}
 .search-input-wrap input::placeholder{color:var(--muted)}
 .search-input-wrap .clr{width:26px;height:26px;border-radius:50%;border:none;background:var(--warm);color:var(--muted);cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center;flex-shrink:0}
 .search-input-wrap .clr.show{display:flex}
-
-.yr-pills{display:flex;gap:.3rem;flex-wrap:wrap}
+.yr-pills{display:flex;gap:.3rem;flex-wrap:wrap;margin-top:.5rem}
 .yr-pill{padding:.3rem .7rem;border-radius:999px;border:1px solid var(--border);background:var(--card);font-size:.75rem;cursor:pointer;color:var(--muted);transition:all .15s;white-space:nowrap;font-family:'Inter',sans-serif}
 .yr-pill:hover,.yr-pill.on{background:var(--gold-glow);color:var(--gold);border-color:var(--gold-light)}
-
 .results-bar{font-size:.75rem;color:var(--muted);padding:.4rem 0 0;display:flex;gap:1rem;align-items:center}
 .results-bar .reset{color:var(--gold);cursor:pointer;text-decoration:underline;font-weight:500}
 
 main{max-width:1200px;margin:0 auto;padding:1rem 1.5rem 5rem}
 .month-header{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--gold);padding:1.5rem 0 .6rem;margin-top:.25rem;border-bottom:1px solid var(--border);position:sticky;top:54px;background:var(--bg);z-index:10}
-
 .grid{columns:3;column-gap:1.25rem}
 @media(max-width:1000px){.grid{columns:2}}
 @media(max-width:600px){.grid{columns:1}}
@@ -66,10 +62,18 @@ main{max-width:1200px;margin:0 auto;padding:1rem 1.5rem 5rem}
 .card-body{padding:1rem 1.2rem 1.1rem}
 .card-date{font-size:.68rem;color:var(--muted);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.04em}
 .card-topic{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;line-height:1.25}
-.verse-block{background:var(--warm);border-radius:var(--r);padding:.6rem .8rem;margin-bottom:.4rem;border-left:3px solid var(--gold-light)}
+.verse-block{background:var(--warm);border-radius:var(--r);padding:.6rem .8rem;margin-bottom:.4rem;border-left:3px solid var(--gold-light);position:relative}
 .verse-block .v{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-weight:600;color:var(--soft);line-height:1.5;font-style:italic}
+.verse-block .v.loading{opacity:.5}
 .verse-block .ref{font-size:.68rem;color:var(--gold);font-weight:600;margin-top:.2rem}
 .verse-block .te{font-size:.82rem;color:var(--soft);margin-top:.15rem;line-height:1.6}
+
+/* Version & Language controls */
+.controls-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.5rem;padding-top:.5rem;border-top:1px solid var(--border)}
+.ctrl-btn{padding:.25rem .55rem;border-radius:999px;border:1px solid var(--border);background:var(--card);font-size:.68rem;cursor:pointer;color:var(--muted);font-family:'Inter',sans-serif;transition:all .15s}
+.ctrl-btn:hover,.ctrl-btn.on{background:var(--gold-glow);color:var(--gold);border-color:var(--gold-light)}
+.ctrl-label{font-size:.65rem;color:var(--muted);padding:.25rem 0;white-space:nowrap}
+.ctrl-select{padding:.2rem .4rem;border-radius:999px;border:1px solid var(--border);font-size:.68rem;color:var(--ink);background:var(--card);cursor:pointer;font-family:'Inter',sans-serif}
 
 .pg{display:none}.pg.on{display:block}
 .playlist-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:1rem 1.4rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
@@ -86,7 +90,6 @@ main{max-width:1200px;margin:0 auto;padding:1rem 1.5rem 5rem}
 
 .btt{position:fixed;bottom:1.5rem;right:1.5rem;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;cursor:pointer;font-size:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,.2);opacity:0;transform:translateY(20px);transition:all .3s;z-index:30;display:flex;align-items:center;justify-content:center}
 .btt.show{opacity:1;transform:translateY(0)}
-
 .lb{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.94);cursor:pointer}
 .lb.on{display:flex;align-items:center;justify-content:center}
 .lb img{max-width:95vw;max-height:93vh;object-fit:contain;border-radius:var(--r)}
@@ -113,7 +116,7 @@ footer{text-align:center;padding:2rem 1.5rem 3rem;color:var(--muted);font-size:.
 <div class="pg on" id="pg-dev">
  <header>
   <h1>Daily <span>Bread</span></h1>
-  <p class="sub">The Word in English & Telugu</p>
+  <p class="sub">The Word in English & Telugu · Multiple Versions · Any Language</p>
  </header>
  <div class="search-panel">
   <div class="search-row">
@@ -122,9 +125,7 @@ footer{text-align:center;padding:2rem 1.5rem 3rem;color:var(--muted);font-size:.
     <button class="clr" id="clearBtn" onclick="clearAll()">&times;</button>
    </div>
   </div>
-  <div style="margin-top:.5rem">
-   <div class="yr-pills" id="yrPills"></div>
-  </div>
+  <div class="yr-pills" id="yrPills"></div>
   <div class="results-bar" id="resultsBar"></div>
  </div>
  <main><div id="content"></div></main>
@@ -147,40 +148,32 @@ let D={devotionals:[],songs:[]};
 const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};
 const fmt=d=>d?new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'';
 
+// ── Bible versions cache ──
+const verseCache={};
+const VERSIONS={original:'📜 Original',kjv:'📖 KJV',web:'📜 WEB'};
+const LANGUAGES={en:'English',hi:'हिन्दी',ta:'தமிழ்',kn:'ಕನ್ನಡ',ml:'മലയാളം',te:'తెలుగు',es:'Español',fr:'Français'};
+
 async function load(){
  try{
   const r=await fetch('messages.json?t='+Date.now());
   if(!r.ok)throw new Error(r.status);
   D=await r.json();D.devotionals=D.devotionals||[];D.songs=D.songs||[];
-  buildYearPills();
-  buildTimeline();
-  renderSongs();
+  buildYearPills(); buildTimeline(); renderSongs();
  }catch(e){console.error(e)}
 }
 
-// ── Year pills ──
 function buildYearPills(){
  const yrs=[...new Set(D.devotionals.map(c=>new Date(c.date).getFullYear()))].sort((a,b)=>b-a);
  document.getElementById('yrPills').innerHTML=yrs.map(y=>`<button class="yr-pill" onclick="filterYear(${y})">${y}</button>`).join('');
 }
-
-let activeYear=null, activeSearch='';
-
-function filterYear(y){
- activeYear=activeYear===y?null:y;
- document.querySelectorAll('.yr-pill').forEach(b=>b.classList.toggle('on',b.textContent==String(y)&&activeYear===y));
- buildTimeline();
-}
-
-// ── Search ──
-let searchTO;
+let activeYear=null,activeSearch='';
+function filterYear(y){activeYear=activeYear===y?null:y;document.querySelectorAll('.yr-pill').forEach(b=>b.classList.toggle('on',b.textContent==String(y)&&activeYear===y));buildTimeline()}
 function doSearch(){
  clearTimeout(searchTO);
  const v=document.getElementById('search').value.trim();
  document.getElementById('clearBtn').classList.toggle('show',v.length>0||activeYear!==null);
  searchTO=setTimeout(()=>{activeSearch=v;buildTimeline()},200);
 }
-
 function clearAll(){
  document.getElementById('search').value='';
  document.getElementById('clearBtn').classList.remove('show');
@@ -188,64 +181,132 @@ function clearAll(){
  document.querySelectorAll('.yr-pill').forEach(b=>b.classList.remove('on'));
  buildTimeline();
 }
+let searchTO;
 
-// ── Timeline ──
 function buildTimeline(){
  const c=document.getElementById('content');
  let cards=D.devotionals;
- 
- if(activeYear) cards=cards.filter(c=>new Date(c.date).getFullYear()===activeYear);
+ if(activeYear)cards=cards.filter(c=>new Date(c.date).getFullYear()===activeYear);
  if(activeSearch){
   const q=activeSearch.toLowerCase();
   cards=cards.filter(c=>[c.verse_english,c.verse_telugu,c.verse_ref,c.topic].filter(Boolean).join(' ').toLowerCase().includes(q));
  }
- 
  const bar=document.getElementById('resultsBar');
- const filters=[];
- if(activeYear) filters.push(`Year: ${activeYear}`);
- if(activeSearch) filters.push(`"${activeSearch}"`);
- bar.innerHTML=filters.length
-  ? `<span>${cards.length} of ${D.devotionals.length} devotionals</span><span class="reset" onclick="clearAll()">Clear filters</span>`
-  : `<span>${cards.length} devotionals</span>`;
-
+ const fltrs=[];
+ if(activeYear)fltrs.push(`Year: ${activeYear}`);
+ if(activeSearch)fltrs.push(`"${activeSearch}"`);
+ bar.innerHTML=fltrs.length?`<span>${cards.length} of ${D.devotionals.length} devotionals</span><span class="reset" onclick="clearAll()">Clear</span>`:`<span>${cards.length} devotionals</span>`;
  if(!cards.length){c.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted)">🕊️<br>No devotionals match</div>';return}
- 
- // Group by month (newest first since data is already newest-first)
  const groups={};
  cards.forEach(card=>{
   const d=new Date(card.date);
   const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
-  if(!groups[key]) groups[key]={label:d.toLocaleDateString('en-US',{month:'long',year:'numeric'}), cards:[]};
+  if(!groups[key])groups[key]={label:d.toLocaleDateString('en-US',{month:'long',year:'numeric'}),cards:[]};
   groups[key].cards.push(card);
  });
- 
- const keys=Object.keys(groups).sort((a,b)=>b.localeCompare(a)); // newest first
- 
+ const keys=Object.keys(groups).sort((a,b)=>b.localeCompare(a));
  let html='';
  keys.forEach(key=>{
   const g=groups[key];
   html+=`<div class="month-header">${g.label}</div><div class="grid">`;
-  g.cards.forEach(card=>html+=renderCard(card));
+  g.cards.forEach((card,i)=>html+=renderCard(card,i));
   html+='</div>';
  });
  c.innerHTML=html;
 }
 
-function renderCard(c){
+function renderCard(c,i){
+ const cid='c'+i;
  let img='';
+ if(c.image)img=`<div class="card-img-wrap" onclick="openImg('${esc(c.image)}')"><img src="${esc(c.image)}" alt="" loading="lazy"></div>`;
+ 
+ // Verse controls — version switcher + language dropdown
+ let controls='';
+ if(c.verse_ref){
+  controls=`<div class="controls-row">
+   <span class="ctrl-label">Version:</span>
+   ${Object.entries(VERSIONS).map(([k,v])=>`<button class="ctrl-btn ${k==='original'?'on':''}" onclick="switchVersion('${cid}','${esc(c.verse_ref)}','${k}',this)">${v}</button>`).join('')}
+   <span class="ctrl-label" style="margin-left:.5rem">🌐</span>
+   <select class="ctrl-select" onchange="translateVerse('${cid}',this.value)" id="${cid}-lang">
+    <option value="">Translate to…</option>
+    ${Object.entries(LANGUAGES).filter(([k])=>k!=='en').map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}
+   </select>
+  </div>`;
+ }
+ 
+ let body=`${c.date?`<div class="card-date">${fmt(c.date)}</div>`:''}
+  ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
+  ${c.verse_english?`<div class="verse-block" id="${cid}-en"><div class="v">${esc(c.verse_english)}</div>${c.verse_ref?`<div class="ref">— ${esc(c.verse_ref)}</div>`:''}</div>`:''}
+  ${c.verse_telugu?`<div class="verse-block"><div class="te">${esc(c.verse_telugu)}</div></div>`:''}
+  ${controls}`;
+ 
  if(c.image){
-  img=`<div class="card-img-wrap" onclick="openImg('${esc(c.image)}')"><img src="${esc(c.image)}" alt="" loading="lazy"></div>`;
-  let body=`${c.date?`<div class="card-date">${fmt(c.date)}</div>`:''}
-   ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
-   ${c.verse_english?`<div class="verse-block"><div class="v">${esc(c.verse_english)}</div>${c.verse_ref?`<div class="ref">— ${esc(c.verse_ref)}</div>`:''}</div>`:''}
-   ${c.verse_telugu?`<div class="verse-block"><div class="te">${esc(c.verse_telugu)}</div></div>`:''}`;
   return `<div class="card">${img}<div class="card-body">${body}</div></div>`;
  } else {
+  // Text-only card has verse in hero
   let verse=c.verse_english||c.verse_telugu||'';
-  let body=`${c.date?`<div class="card-date">${fmt(c.date)}</div>`:''}
+  return `<div class="card card-text-only">
+   ${c.date?`<div class="card-date">${fmt(c.date)}</div>`:''}
    ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
-   ${verse?`<div class="verse-hero">${esc(verse.slice(0,200))}</div>`:''}`;
-  return `<div class="card card-text-only">${body}</div>`;
+   ${verse?`<div class="verse-hero" id="${cid}-en">${esc(verse.slice(0,200))}</div>`:''}
+   ${c.verse_ref?`<div class="ref" style="text-align:center">— ${esc(c.verse_ref)}</div>`:''}
+   ${controls}
+  </div>`;
+ }
+}
+
+// ── Version switcher ──
+async function switchVersion(cid,ref,ver,btn){
+ const el=document.getElementById(cid+'-en');
+ if(!el||!ref)return;
+ 
+ // Highlight active button
+ btn.parentElement.querySelectorAll('.ctrl-btn').forEach(b=>b.classList.remove('on'));
+ btn.classList.add('on');
+ 
+ if(ver==='original'){
+  buildTimeline(); // Rebuild to restore original
+  return;
+ }
+ 
+ el.querySelector('.v').classList.add('loading');
+ el.querySelector('.v').textContent='Loading…';
+ 
+ try{
+  const resp=await fetch(`https://bible-api.com/${encodeURIComponent(ref)}?translation=${ver}`);
+  if(!resp.ok)throw new Error(resp.status);
+  const data=await resp.json();
+  const text=data.verses.map(v=>v.text.trim()).join(' ');
+  el.querySelector('.v').textContent=text;
+  el.querySelector('.v').classList.remove('loading');
+ }catch(e){
+  el.querySelector('.v').textContent='Could not load version. Try again.';
+  el.querySelector('.v').classList.remove('loading');
+ }
+}
+
+// ── Language translator ──
+async function translateVerse(cid,lang){
+ if(!lang)return;
+ const el=document.getElementById(cid+'-en');
+ if(!el)return;
+ 
+ const vEl=el.querySelector('.v')||el.querySelector('.verse-hero');
+ if(!vEl)return;
+ const text=vEl.textContent;
+ if(!text||text==='Loading…')return;
+ 
+ vEl.classList.add('loading');
+ try{
+  const resp=await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&q=${encodeURIComponent(text.slice(0,500))}`);
+  const data=await resp.json();
+  const translated=data[0].map(p=>p[0]).join('');
+  vEl.textContent=translated;
+  vEl.classList.remove('loading');
+  // Reset select
+  document.getElementById(cid+'-lang').value='';
+ }catch(e){
+  vEl.classList.remove('loading');
  }
 }
 
