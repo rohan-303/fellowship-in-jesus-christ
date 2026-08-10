@@ -4,38 +4,316 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fellowship in Jesus Christ</title>
-<link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════ DESIGN TOKENS ═══════════════ */
+:root {
+  --cream: #faf8f5;
+  --warm-white: #f6f4f0;
+  --paper: #fefdfb;
+  --gold: #b8942e;
+  --gold-light: #d4b65a;
+  --gold-subtle: rgba(184,148,46,.08);
+  --ink: #1c1a16;
+  --ink-soft: #3d3830;
+  --muted: #78736a;
+  --border: rgba(0,0,0,.08);
+  --radius: 6px;
+  --radius-lg: 10px;
+  --shadow-card: 0 1px 3px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.03);
+  --shadow-hover: 0 2px 6px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+}
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0 }
+html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased }
+body {
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  min-height:100vh;
+}
+
+/* ═══════════════ HEADER ═══════════════ */
+header {
+  background:var(--paper);
+  border-bottom:1px solid var(--border);
+  padding:2.5rem 1.5rem 2rem;
+  text-align:center;
+}
+.header-inner { max-width:680px; margin:0 auto }
+
+h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:-0.02em;
+  line-height:1.15;
+  margin-bottom:.35rem;
+}
+h1 span { color:var(--gold) }
+.subtitle {
+  color:var(--muted);
+  font-size:.9rem;
+  font-style:italic;
+  margin-bottom:1.25rem;
+}
+
+.status-bar {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-size:.75rem; color:var(--muted);
+  background:var(--warm-white); padding:.35rem .85rem; border-radius:999px;
+}
+.status-dot { width:6px; height:6px; border-radius:50%; background:#ccc; transition:background .3s }
+.status-dot.live { background:#4ade80; box-shadow:0 0 6px rgba(74,222,128,.4) }
+
+/* ═══════════════ MAIN GRID ═══════════════ */
+main {
+  max-width:1100px; margin:0 auto; padding:2rem 1.5rem 4rem;
+}
+.day-grid {
+  columns:2;
+  column-gap:1.5rem;
+}
+@media (max-width:720px) { .day-grid { columns:1 } }
+
+/* ═══════════════ CARD ═══════════════ */
+.card {
+  break-inside:avoid;
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  margin-bottom:1.5rem;
+  overflow:hidden;
+  box-shadow:var(--shadow-card);
+  transition:box-shadow .25s ease;
+  animation:fadeUp .5s ease both;
+}
+.card:hover { box-shadow:var(--shadow-hover) }
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }
+
+/* Card image */
+.card-image {
+  width:100%; aspect-ratio:16/10; object-fit:cover; display:block;
+  background:var(--warm-white);
+  cursor:pointer; transition:transform .3s ease;
+}
+.card-image:hover { transform:scale(1.02) }
+.card-image-placeholder {
+  width:100%; aspect-ratio:16/10;
+  background:linear-gradient(135deg, var(--warm-white), var(--gold-subtle));
+  display:flex; align-items:center; justify-content:center;
+  font-size:3rem; color:var(--gold-light);
+}
+
+/* Card body */
+.card-body { padding:1.25rem 1.35rem }
+
+.card-date {
+  font-size:.75rem; color:var(--muted); text-transform:uppercase;
+  letter-spacing:.06em; font-weight:600; margin-bottom:.5rem;
+}
+.card-topic {
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem; font-weight:700; color:var(--ink);
+  line-height:1.3; margin-bottom:.75rem;
+}
+
+/* Verse block */
+.verse-block {
+  background:var(--warm-white); border-radius:var(--radius);
+  padding:.85rem 1rem; margin-bottom:.85rem;
+  border-left:3px solid var(--gold);
+}
+.verse-text {
+  font-family:'Playfair Display',serif;
+  font-size:.95rem; font-weight:600; color:var(--ink-soft);
+  line-height:1.5; font-style:italic;
+}
+.verse-ref {
+  font-size:.75rem; color:var(--gold); font-weight:600;
+  margin-top:.35rem; font-style:normal;
+}
+.verse-telugu {
+  font-family:'Inter','Noto Sans Telugu',sans-serif;
+  font-size:.9rem; color:var(--ink-soft);
+  margin-top:.4rem; line-height:1.6; font-style:normal;
+}
+
+/* YouTube link */
+.yt-link {
+  display:flex; align-items:center; gap:.6rem;
+  text-decoration:none; color:var(--ink);
+  padding:.55rem .85rem; border-radius:var(--radius);
+  background:rgba(255,0,0,.04); border:1px solid rgba(255,0,0,.1);
+  transition:all .2s ease; font-size:.85rem; font-weight:500;
+}
+.yt-link:hover { background:rgba(255,0,0,.08); border-color:rgba(255,0,0,.2) }
+.yt-icon {
+  width:24px; height:24px; flex-shrink:0;
+  background:#f00; border-radius:50%; position:relative;
+  display:flex; align-items:center; justify-content:center;
+}
+.yt-icon::after {
+  content:''; display:block;
+  width:0; height:0;
+  border-left:8px solid #fff; border-top:5px solid transparent; border-bottom:5px solid transparent;
+  margin-left:2px;
+}
+
+/* ═══════════════ LIGHTBOX ═══════════════ */
+.lightbox { display:none; position:fixed; inset:0; z-index:200; background:rgba(0,0,0,.92); cursor:pointer; align-items:center; justify-content:center }
+.lightbox.active { display:flex }
+.lightbox img { max-width:94vw; max-height:92vh; border-radius:var(--radius); cursor:default }
+.lightbox-close { position:absolute; top:1.5rem; right:2rem; font-size:2rem; color:#fff; cursor:pointer; width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,.1); transition:background .2s }
+.lightbox-close:hover { background:rgba(255,255,255,.2) }
+
+/* ═══════════════ EMPTY STATE ═══════════════ */
+.empty-state { text-align:center; padding:5rem 1.5rem; columns:1 }
+.empty-state .icon { font-size:3rem; margin-bottom:1rem }
+.empty-state h2 { font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:.5rem; color:var(--ink) }
+.empty-state p { color:var(--muted); max-width:360px; margin:0 auto; font-size:.9rem }
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer { text-align:center; padding:2rem 1.5rem 3rem; color:var(--muted); font-size:.75rem; border-top:1px solid var(--border) }
+
+/* ═══════════════ SCROLLBAR ═══════════════ */
+::-webkit-scrollbar { width:5px }
+::-webkit-scrollbar-track { background:transparent }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px }
+</style>
 </head>
 <body>
-<div class="bg-gradient"></div>
 
 <header>
   <div class="header-inner">
-    <h1>✝️ Fellowship in Jesus Christ</h1>
-    <p class="subtitle">Where two or three gather in my name, there am I with them. <span>— Matthew 18:20</span></p>
-    <div class="status">
-      <span class="dot" id="statusDot"></span>
-      <span id="statusText">Loading...</span>
-      <span class="last-updated" id="lastUpdated"></span>
+    <h1>Fellowship <span>in Jesus Christ</span></h1>
+    <p class="subtitle">Daily bread from the Word — English & Telugu</p>
+    <div class="status-bar">
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">Loading…</span>
     </div>
   </div>
 </header>
 
 <main>
-  <div id="feed">
-    <div class="loading-state">
-      <div class="spinner"></div>
-      <p>Loading messages...</p>
-    </div>
-  </div>
+  <div class="day-grid" id="grid"></div>
 </main>
 
-<footer>
-  <p>Made with ❤️ for family · Auto-updates from WhatsApp</p>
-</footer>
+<footer>Made with ❤️ for family</footer>
 
-<script src="app.js"></script>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">&times;</span>
+</div>
+
+<script>
+(function(){
+const grid = document.getElementById('grid');
+const sDot = document.getElementById('statusDot');
+const sText = document.getElementById('statusText');
+const lb = document.getElementById('lightbox');
+const DATA = 'messages.json';
+let lastTs = '';
+
+// ── Lightbox ──
+lb.addEventListener('click', e => { if(e.target===lb||e.target.className==='lightbox-close'){ lb.classList.remove('active'); const i=lb.querySelector('img'); if(i)i.remove() }});
+document.addEventListener('keydown', e => { if(e.key==='Escape') lb.click() });
+
+window.openImage = function(src){
+  const img = document.createElement('img'); img.src=src; img.alt='';
+  lb.appendChild(img); lb.classList.add('active');
+};
+
+// ── Format time ──
+function fmtDate(iso){
+  if(!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+}
+
+// ── Render card ──
+function renderCard(doc, idx){
+  const c = document.createElement('div');
+  c.className = 'card';
+  c.style.animationDelay = `${Math.min(idx,30)*0.06}s`;
+
+  let imgHTML = '';
+  if(doc.image){
+    imgHTML = `<img class="card-image" src="${esc(doc.image)}" alt="Daily image" loading="lazy" onclick="openImage('${esc(doc.image)}')">`;
+  } else {
+    imgHTML = `<div class="card-image-placeholder">🕊️</div>`;
+  }
+
+  let bodyHTML = '';
+  bodyHTML += doc.date ? `<div class="card-date">${fmtDate(doc.date)}</div>` : '';
+  bodyHTML += doc.topic ? `<div class="card-topic">${esc(doc.topic)}</div>` : '';
+
+  // English verse
+  if(doc.verse_english){
+    bodyHTML += `<div class="verse-block"><div class="verse-text">"${esc(doc.verse_english)}"</div>`;
+    if(doc.verse_ref) bodyHTML += `<div class="verse-ref">— ${esc(doc.verse_ref)}</div>`;
+    bodyHTML += `</div>`;
+  }
+
+  // Telugu verse
+  if(doc.verse_telugu){
+    bodyHTML += `<div class="verse-block"><div class="verse-telugu">${esc(doc.verse_telugu)}</div></div>`;
+  }
+
+  // YouTube
+  if(doc.youtube_url){
+    bodyHTML += `<a class="yt-link" href="${esc(doc.youtube_url)}" target="_blank" rel="noopener"><span class="yt-icon"></span> ${esc(doc.youtube_title||'Watch worship song')}</a>`;
+  }
+
+  // Text fallback
+  if(!doc.verse_english && !doc.verse_telugu && doc.text){
+    bodyHTML += `<div class="verse-block"><div class="verse-text">${esc(doc.text)}</div></div>`;
+  }
+
+  c.innerHTML = imgHTML + `<div class="card-body">${bodyHTML}</div>`;
+  return c;
+}
+
+// ── Render all ──
+function render(documents){
+  grid.innerHTML = '';
+  if(!documents.length){
+    grid.className = 'empty-state';
+    grid.innerHTML = `<div class="icon">🕊️</div><h2>No devotionals yet</h2><p>Daily messages from the WhatsApp group will appear here as beautifully formatted cards.</p>`;
+    return;
+  }
+  grid.className = 'day-grid';
+  const frag = document.createDocumentFragment();
+  documents.forEach((d,i) => frag.appendChild(renderCard(d,i)));
+  grid.appendChild(frag);
+}
+
+// ── Load ──
+async function load(){
+  try{
+    const r = await fetch(DATA+'?t='+Date.now());
+    if(!r.ok) throw new Error(r.status);
+    const data = await r.json();
+    const docs = data.documents||data.messages||[];
+    const ts = data.last_updated||'';
+    if(ts!==lastTs){ render(docs); lastTs=ts }
+    sDot.className = 'status-dot live';
+    sText.textContent = `${docs.length} devotional${docs.length!==1?'s':''}`;
+  }catch(e){
+    sDot.className = 'status-dot';
+    sText.textContent = 'Offline';
+    if(!grid.children.length||grid.className==='empty-state'){ render([]) }
+  }
+}
+
+function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML }
+
+load();
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden) load() });
+setInterval(load, 60000);
+})();
+</script>
 </body>
 </html>
