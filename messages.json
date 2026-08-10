@@ -1,7 +1,13 @@
 {
   "group_name": "Fellowship in Jesus Christ",
-  "last_updated": "2026-08-08T00:00:00Z",
+  "last_updated": "2026-08-10T03:45:27.535346+00:00",
   "messages": [
+    {
+      "id": "wa-2026-08-09T23-50-00-000Z",
+      "sender": "911234567890",
+      "timestamp": "2026-08-09T23:50:00.000Z",
+      "text": "✨ Test message — pipeline verification"
+    },
     {
       "id": "sample-1",
       "sender": "Dad",
@@ -14,7 +20,11 @@
       "timestamp": "2026-08-07T09:15:00Z",
       "text": "Amen! 🙌 Don't forget prayer meeting tonight at 7pm. Here's the worship song we'll be singing:",
       "videoLinks": [
-        {"url": "https://youtu.be/example1", "platform": "YouTube", "title": "Way Maker - Leeland"}
+        {
+          "url": "https://youtu.be/example1",
+          "platform": "YouTube",
+          "title": "Way Maker - Leeland"
+        }
       ]
     },
     {
@@ -22,7 +32,9 @@
       "sender": "Dad",
       "timestamp": "2026-08-07T10:00:00Z",
       "text": "Beautiful sunrise during my morning walk. God's creation is amazing! 🌅",
-      "images": ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800"]
+      "images": [
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800"
+      ]
     }
   ]
 }
