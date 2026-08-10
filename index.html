@@ -20,78 +20,85 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--i
 
 /* NAV */
 nav{background:rgba(255,253,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;padding:0 1.5rem}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2rem;height:54px}
-.nav-brand{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.15rem;color:var(--ink);text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1.5rem;height:54px}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
 .nav-brand span{color:var(--gold)}
 .nav-links{display:flex;gap:.25rem;margin-left:auto}
-.nav-link{padding:.4rem 1rem;border-radius:999px;text-decoration:none;font-size:.82rem;font-weight:500;color:var(--muted);transition:all .2s}
+.nav-link{padding:.4rem 1rem;border-radius:999px;text-decoration:none;font-size:.8rem;font-weight:500;color:var(--muted);transition:all .2s;cursor:pointer}
 .nav-link:hover,.nav-link.on{background:var(--gold-glow);color:var(--gold)}
 
+/* SEARCH BAR */
+.search-wrap{max-width:1200px;margin:0 auto;padding:1.5rem 1.5rem 0}
+.search-bar{display:flex;gap:.5rem;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:999px;padding:.3rem .3rem .3rem 1.2rem;box-shadow:var(--shadow)}
+.search-bar input{flex:1;border:none;outline:none;background:transparent;font-size:.88rem;color:var(--ink);font-family:'Inter',sans-serif;padding:.45rem 0}
+.search-bar input::placeholder{color:var(--muted)}
+.search-bar .clear-btn{width:28px;height:28px;border-radius:50%;border:none;background:var(--warm);color:var(--muted);cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center;flex-shrink:0}
+.search-bar .clear-btn.visible{display:flex}
+.search-results{font-size:.78rem;color:var(--muted);padding:.5rem 0 0 1rem}
+
 /* HEADER */
-header{text-align:center;padding:3.5rem 1.5rem 2rem}
-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.1}
+header{text-align:center;padding:3rem 1.5rem 1.5rem}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.1}
 h1 span{color:var(--gold)}
-.sub{color:var(--muted);font-size:.9rem;font-style:italic;margin:.4rem 0 0}
-.stats-row{display:inline-flex;gap:2rem;margin-top:.75rem;font-size:.78rem;color:var(--muted)}
-.stats-row b{font-weight:600;color:var(--soft)}
+.sub{color:var(--muted);font-size:.85rem;font-style:italic;margin:.3rem 0 0}
 
 /* MAIN */
-main{max-width:1200px;margin:0 auto;padding:1.5rem 1.5rem 5rem}
+main{max-width:1200px;margin:0 auto;padding:1rem 1.5rem 5rem}
+
+/* MONTH HEADER */
+.month-header{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--gold);padding:1.5rem 0 .75rem;margin-top:.5rem;border-bottom:1px solid var(--border);position:sticky;top:54px;background:var(--bg);z-index:10}
+
 .grid{columns:3;column-gap:1.25rem}
 @media(max-width:1000px){.grid{columns:2}}
 @media(max-width:600px){.grid{columns:1}}
 
-.card{break-inside:avoid;background:var(--card);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:1.25rem;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .3s,transform .2s;animation:in .5s ease both}
+.card{break-inside:avoid;background:var(--card);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:1.25rem;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .25s,transform .2s;animation:in .45s ease both}
 .card:hover{box-shadow:0 2px 8px rgba(0,0,0,.06),0 8px 28px rgba(0,0,0,.05);transform:translateY(-1px)}
-@keyframes in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card.hidden{display:none}
 
-/* IMAGE */
 .card-img-wrap{position:relative;background:var(--warm);overflow:hidden;cursor:pointer}
 .card-img-wrap img{width:100%;max-height:420px;object-fit:contain;display:block;background:var(--warm);transition:transform .35s ease}
 .card-img-wrap:hover img{transform:scale(1.03)}
 
-/* TEXT-ONLY CARD — beautiful verse styling */
-.card-text-only{padding:1.6rem 1.5rem;background:linear-gradient(160deg,var(--card) 60%,var(--gold-glow));text-align:center}
-.card-text-only .verse-hero{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--soft);line-height:1.55;font-style:italic;max-width:90%;margin:0 auto}
+.card-text-only{padding:1.5rem 1.4rem;background:linear-gradient(160deg,var(--card) 60%,var(--gold-glow));text-align:center}
+.card-text-only .verse-hero{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--soft);line-height:1.55;font-style:italic;max-width:90%;margin:0 auto}
 .card-text-only .verse-hero::before{content:'"'}
 .card-text-only .verse-hero::after{content:'"'}
 
-/* BODY */
-.card-body{padding:1.1rem 1.3rem 1.2rem}
-.card-meta{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem}
-.card-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8a6820);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex-shrink:0}
-.card-sender{font-size:.78rem;font-weight:600;color:var(--soft)}
-.card-date{font-size:.7rem;color:var(--muted);margin-left:auto}
-.card-topic{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
-.verse-block{background:var(--warm);border-radius:var(--r);padding:.7rem .85rem;margin-bottom:.5rem;border-left:3px solid var(--gold-light)}
-.verse-block .v{font-family:'Cormorant Garamond',serif;font-size:.9rem;font-weight:600;color:var(--soft);line-height:1.5;font-style:italic}
-.verse-block .ref{font-size:.7rem;color:var(--gold);font-weight:600;margin-top:.25rem}
-.verse-block .te{font-size:.84rem;color:var(--soft);margin-top:.2rem;line-height:1.6}
+.card-body{padding:1rem 1.2rem 1.1rem}
+.card-date{font-size:.68rem;color:var(--muted);margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.04em}
+.card-topic{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.4rem;line-height:1.25}
+.verse-block{background:var(--warm);border-radius:var(--r);padding:.6rem .8rem;margin-bottom:.4rem;border-left:3px solid var(--gold-light)}
+.verse-block .v{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-weight:600;color:var(--soft);line-height:1.5;font-style:italic}
+.verse-block .ref{font-size:.68rem;color:var(--gold);font-weight:600;margin-top:.2rem}
+.verse-block .te{font-size:.82rem;color:var(--soft);margin-top:.15rem;line-height:1.6}
 
-/* SONGS PAGE */
+/* SONGS */
 .pg{display:none}.pg.on{display:block}
 .playlist-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:1rem 1.4rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.playlist-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.15rem;background:var(--gold);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;font-size:.8rem;border:none;cursor:pointer;transition:background .2s}
+.playlist-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.1rem;background:var(--gold);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;font-size:.78rem}
 .playlist-btn:hover{background:#8a6820}
-.song-grid{display:flex;flex-direction:column;gap:.35rem}
-.song-item{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:.55rem .8rem;text-decoration:none;color:var(--ink);transition:all .2s}
+.song-grid{display:flex;flex-direction:column;gap:.3rem}
+.song-item{display:flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:.5rem .75rem;text-decoration:none;color:var(--ink);transition:all .2s}
 .song-item:hover{background:var(--gold-glow)}
-.song-n{width:26px;height:26px;border-radius:50%;background:var(--gold-glow);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:600;color:var(--gold);flex-shrink:0}
+.song-n{width:24px;height:24px;border-radius:50%;background:var(--gold-glow);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:600;color:var(--gold);flex-shrink:0}
 .song-info{flex:1;min-width:0;display:flex;align-items:center;gap:.5rem}
-.song-info .t{font-size:.82rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song-info .d{font-size:.68rem;color:var(--muted);white-space:nowrap}
-.song-play{width:24px;height:24px;background:#e00;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.song-play::after{content:'';width:0;height:0;border-left:7px solid #fff;border-top:4px solid transparent;border-bottom:4px solid transparent;margin-left:1px}
+.song-info .t{font-size:.8rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-play{width:22px;height:22px;background:#e00;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.song-play::after{content:'';width:0;height:0;border-left:6px solid #fff;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent;margin-left:1px}
 
-/* LIGHTBOX */
+/* BACK TO TOP */
+.btt{position:fixed;bottom:1.5rem;right:1.5rem;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;border:none;cursor:pointer;font-size:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,.2);opacity:0;transform:translateY(20px);transition:all .3s;z-index:30;display:flex;align-items:center;justify-content:center}
+.btt.visible{opacity:1;transform:translateY(0)}
+
 .lb{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.94);cursor:pointer}
 .lb.on{display:flex;align-items:center;justify-content:center}
-.lb img{max-width:95vw;max-height:93vh;object-fit:contain;border-radius:var(--r);cursor:default}
+.lb img{max-width:95vw;max-height:93vh;object-fit:contain;border-radius:var(--r)}
 .lb-x{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:#fff;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08)}
 .lb-x:hover{background:rgba(255,255,255,.18)}
 
 footer{text-align:center;padding:2rem 1.5rem 3rem;color:var(--muted);font-size:.7rem;border-top:1px solid var(--border)}
-
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
@@ -113,80 +120,126 @@ footer{text-align:center;padding:2rem 1.5rem 3rem;color:var(--muted);font-size:.
  <header>
   <h1>Daily <span>Bread</span></h1>
   <p class="sub">The Word in English & Telugu</p>
-  <div class="stats-row"><span><b id="nc">0</b> devotionals</span><span><b id="ni">0</b> with images</span></div>
  </header>
- <main><div class="grid" id="grid"></div></main>
+ <div class="search-wrap">
+  <div class="search-bar">
+   <input type="text" id="search" placeholder="Search by verse, keyword, or reference…" oninput="doSearch()">
+   <button class="clear-btn" id="clearBtn" onclick="clearSearch()">&times;</button>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+ </div>
+ <main>
+  <div id="content"></div>
+ </main>
 </div>
 
 <div class="pg" id="pg-songs">
- <header>
-  <h1>Worship <span>Songs</span></h1>
-  <p class="sub">Every YouTube song shared in the fellowship</p>
- </header>
+ <header><h1>Worship <span>Songs</span></h1><p class="sub">Every YouTube song shared in the fellowship</p></header>
  <main>
   <div class="playlist-banner"><strong>▶ Listen to all:</strong><a href="#" class="playlist-btn" id="pl-btn" target="_blank">Open YouTube Playlist</a></div>
   <div class="song-grid" id="songlist"></div>
  </main>
 </div>
 
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <footer>Made with ❤️ for family</footer>
 <div class="lb" id="lb"><span class="lb-x">&times;</span></div>
 
 <script>
 let D={devotionals:[],songs:[]};
+const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};
+const fmt=d=>{if(!d)return'';return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})};
+
 async function load(){
  try{
   const r=await fetch('messages.json?t='+Date.now());
   if(!r.ok)throw new Error(r.status);
   D=await r.json();D.devotionals=D.devotionals||[];D.songs=D.songs||[];
-  document.getElementById('nc').textContent=D.devotionals.length;
-  document.getElementById('ni').textContent=D.devotionals.filter(c=>c.image).length;
-  renderDevotionals();
+  buildTimeline();
   renderSongs();
  }catch(e){console.error(e)}
 }
 
-const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};
-const fmt=d=>{if(!d)return'';const dt=new Date(d);return dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})};
-const ini=s=>(s||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-
-function renderDevotionals(){
- const g=document.getElementById('grid');
- if(!D.devotionals.length){g.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted)">🕊️<br>No devotionals yet</div>';return}
- const frag=document.createDocumentFragment();
- D.devotionals.forEach((c,i)=>{
-  const el=document.createElement('div');el.className='card';el.style.animationDelay=`${Math.min(i,60)*.03}s`;
-  let img='';
-  if(c.image){
-   img=`<div class="card-img-wrap" onclick="openImg('${esc(c.image)}')"><img src="${esc(c.image)}" alt="" loading="lazy"></div>`;
-   let b=`
-    ${c.date?`<div class="card-meta"><div class="card-avatar">${ini(c.sender)}</div><span class="card-sender">${esc(c.sender)}</span><span class="card-date">${fmt(c.date)}</span></div>`:''}
-    ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
-    ${c.verse_english?`<div class="verse-block"><div class="v">${esc(c.verse_english)}</div>${c.verse_ref?`<div class="ref">— ${esc(c.verse_ref)}</div>`:''}</div>`:''}
-    ${c.verse_telugu?`<div class="verse-block"><div class="te">${esc(c.verse_telugu)}</div></div>`:''}
-   `;
-   el.innerHTML=img+`<div class="card-body">${b}</div>`;
-  } else {
-   // Text-only card — beautiful verse display
-   let verse=c.verse_english||c.verse_telugu||'';
-   el.className='card card-text-only';
-   let b=`
-    ${c.date?`<div class="card-meta"><div class="card-avatar">${ini(c.sender)}</div><span class="card-sender">${esc(c.sender)}</span><span class="card-date">${fmt(c.date)}</span></div>`:''}
-    ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
-    ${verse?`<div class="verse-hero">${esc(verse.slice(0,200))}</div>`:''}
-   `;
-   el.innerHTML=b;
-  }
-  frag.appendChild(el);
+// ── Timeline with month groups ──
+function buildTimeline(filter=''){
+ const c=document.getElementById('content');
+ const cards=D.devotionals;
+ 
+ // Filter
+ let filtered=cards;
+ if(filter){
+  const q=filter.toLowerCase();
+  filtered=cards.filter(c=>{
+   const txt=[c.verse_english,c.verse_telugu,c.verse_ref,c.topic,c.date].filter(Boolean).join(' ').toLowerCase();
+   return txt.includes(q);
+  });
+ }
+ document.getElementById('searchResults').textContent=filter?`${filtered.length} of ${cards.length} devotionals`:`${cards.length} devotionals`;
+ 
+ if(!filtered.length){c.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted)">🕊️<br>No devotionals found</div>';return}
+ 
+ // Group by month
+ const groups={};
+ filtered.forEach(card=>{
+  const d=new Date(card.date);
+  const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+  if(!groups[key])groups[key]={label:d.toLocaleDateString('en-US',{month:'long',year:'numeric'}),cards:[]};
+  groups[key].cards.push(card);
  });
- g.innerHTML='';g.appendChild(frag);
+ 
+ // Sort groups oldest first
+ const keys=Object.keys(groups).sort();
+ 
+ let html='';
+ keys.forEach(key=>{
+  const g=groups[key];
+  html+=`<div class="month-header">${g.label}</div><div class="grid">`;
+  g.cards.forEach((card,i)=>{
+   html+=renderCard(card,i);
+  });
+  html+='</div>';
+ });
+ 
+ c.innerHTML=html;
 }
 
+function renderCard(c,i){
+ let img='';
+ if(c.image){
+  img=`<div class="card-img-wrap" onclick="openImg('${esc(c.image)}')"><img src="${esc(c.image)}" alt="" loading="lazy"></div>`;
+  let body=`${c.date?`<div class="card-date">${fmt(c.date)}</div>`:''}
+   ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
+   ${c.verse_english?`<div class="verse-block"><div class="v">${esc(c.verse_english)}</div>${c.verse_ref?`<div class="ref">— ${esc(c.verse_ref)}</div>`:''}</div>`:''}
+   ${c.verse_telugu?`<div class="verse-block"><div class="te">${esc(c.verse_telugu)}</div></div>`:''}`;
+  return `<div class="card" style="animation-delay:${Math.min(i,30)*.02}s">${img}<div class="card-body">${body}</div></div>`;
+ } else {
+  let verse=c.verse_english||c.verse_telugu||'';
+  let body=`${c.date?`<div class="card-date">${fmt(c.date)}</div>`:''}
+   ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
+   ${verse?`<div class="verse-hero">${esc(verse.slice(0,200))}</div>`:''}`;
+  return `<div class="card card-text-only" style="animation-delay:${Math.min(i,30)*.02}s">${body}</div>`;
+ }
+}
+
+// ── Search ──
+let searchTO;
+function doSearch(){
+ clearTimeout(searchTO);
+ const v=document.getElementById('search').value.trim();
+ document.getElementById('clearBtn').classList.toggle('visible',v.length>0);
+ searchTO=setTimeout(()=>buildTimeline(v),200);
+}
+function clearSearch(){
+ document.getElementById('search').value='';
+ document.getElementById('clearBtn').classList.remove('visible');
+ buildTimeline();
+}
+
+// ── Songs ──
 function renderSongs(){
  const l=document.getElementById('songlist');
  if(!D.songs.length){l.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted)">No songs yet</div>';return}
- l.innerHTML=D.songs.map((s,i)=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" class="song-item"><span class="song-n">${i+1}</span><span class="song-info"><span class="t">${esc(s.title||'Worship Song')}</span><span class="d">${fmt(s.date)}</span></span><span class="song-play"></span></a>`).join('');
- // Build playlist
+ l.innerHTML=D.songs.map((s,i)=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" class="song-item"><span class="song-n">${i+1}</span><span class="song-info"><span class="t">${esc(s.title||'Worship Song')}</span></span><span class="song-play"></span></a>`).join('');
  const ids=D.songs.map(s=>{const m=s.url.match(/(?:v=|youtu\.be\/)([\w\-]+)/);return m?m[1]:null}).filter(Boolean);
  if(ids.length)document.getElementById('pl-btn').href='https://www.youtube.com/watch_videos?video_ids='+ids.join(',');
 }
@@ -197,10 +250,14 @@ function show(p){
  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('on',l.dataset.pg===p));
 }
 
+// Lightbox
 const lb=document.getElementById('lb');
 lb.addEventListener('click',e=>{if(e.target===lb||e.target.className==='lb-x'){lb.classList.remove('on');const i=lb.querySelector('img');if(i)i.remove()}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.click()});
 window.openImg=function(s){const i=document.createElement('img');i.src=s;lb.appendChild(i);lb.classList.add('on')};
+
+// Back to top
+window.addEventListener('scroll',()=>{document.getElementById('btt').classList.toggle('visible',window.scrollY>600)});
 
 load();
 </script>
