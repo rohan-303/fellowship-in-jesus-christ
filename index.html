@@ -7,313 +7,217 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════ DESIGN TOKENS ═══════════════ */
 :root {
-  --cream: #faf8f5;
-  --warm-white: #f6f4f0;
-  --paper: #fefdfb;
-  --gold: #b8942e;
-  --gold-light: #d4b65a;
-  --gold-subtle: rgba(184,148,46,.08);
-  --ink: #1c1a16;
-  --ink-soft: #3d3830;
-  --muted: #78736a;
-  --border: rgba(0,0,0,.08);
-  --radius: 6px;
-  --radius-lg: 10px;
-  --shadow-card: 0 1px 3px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.03);
-  --shadow-hover: 0 2px 6px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+  --cream:#faf8f5; --paper:#fefdfb; --warm:#f6f4f0;
+  --gold:#b8942e; --gold-light:#d4b65a; --gold-bg:rgba(184,148,46,.07);
+  --ink:#1c1a16; --ink-soft:#3d3830; --muted:#78736a;
+  --border:rgba(0,0,0,.07); --r:6px; --rl:10px;
+  --shadow:0 1px 3px rgba(0,0,0,.04),0 4px 15px rgba(0,0,0,.03);
+  --shadow-h:0 2px 6px rgba(0,0,0,.06),0 8px 28px rgba(0,0,0,.05);
 }
-*, *::before, *::after { box-sizing:border-box; margin:0; padding:0 }
-html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased }
-body {
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  line-height:1.6;
-  min-height:100vh;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;min-height:100vh}
 
-/* ═══════════════ HEADER ═══════════════ */
-header {
-  background:var(--paper);
-  border-bottom:1px solid var(--border);
-  padding:2.5rem 1.5rem 2rem;
-  text-align:center;
-}
-.header-inner { max-width:680px; margin:0 auto }
+/* NAV */
+nav{background:var(--paper);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;padding:0 1.5rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:2rem;height:56px}
+.nav-brand{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.nav-brand span{color:var(--gold)}
+.nav-links{display:flex;gap:.25rem;margin-left:auto}
+.nav-link{padding:.45rem 1rem;border-radius:999px;text-decoration:none;font-size:.85rem;font-weight:500;color:var(--muted);transition:all .2s}
+.nav-link:hover,.nav-link.active{background:var(--gold-bg);color:var(--gold)}
 
-h1 {
-  font-family:'Playfair Display',serif;
-  font-size:clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight:700;
-  color:var(--ink);
-  letter-spacing:-0.02em;
-  line-height:1.15;
-  margin-bottom:.35rem;
-}
-h1 span { color:var(--gold) }
-.subtitle {
-  color:var(--muted);
-  font-size:.9rem;
-  font-style:italic;
-  margin-bottom:1.25rem;
-}
+/* HEADER */
+header{text-align:center;padding:4rem 1.5rem 2.5rem;background:var(--paper);border-bottom:1px solid var(--border)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.15}
+h1 span{color:var(--gold)}
+.subtitle{color:var(--muted);font-size:.9rem;font-style:italic;margin:.5rem 0 0}
+.stats{display:inline-flex;gap:1.5rem;margin-top:1rem;font-size:.8rem;color:var(--muted)}
+.stat b{color:var(--ink);font-weight:600}
 
-.status-bar {
-  display:inline-flex; align-items:center; gap:.5rem;
-  font-size:.75rem; color:var(--muted);
-  background:var(--warm-white); padding:.35rem .85rem; border-radius:999px;
-}
-.status-dot { width:6px; height:6px; border-radius:50%; background:#ccc; transition:background .3s }
-.status-dot.live { background:#4ade80; box-shadow:0 0 6px rgba(74,222,128,.4) }
+/* MAIN */
+main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.section-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:1.5rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
 
-/* ═══════════════ MAIN GRID ═══════════════ */
-main {
-  max-width:1100px; margin:0 auto; padding:2rem 1.5rem 4rem;
-}
-.day-grid {
-  columns:2;
-  column-gap:1.5rem;
-}
-@media (max-width:720px) { .day-grid { columns:1 } }
+/* CARD GRID */
+.grid{columns:2;column-gap:1.5rem}
+@media(max-width:720px){.grid{columns:1}}
+.card{break-inside:avoid;background:var(--paper);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:1.5rem;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .25s;animation:fadeUp .5s ease both}
+.card:hover{box-shadow:var(--shadow-h)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--warm);cursor:pointer;transition:transform .3s}
+.card img:hover{transform:scale(1.02)}
+.card-img-pl{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,var(--warm),var(--gold-bg));display:flex;align-items:center;justify-content:center;font-size:3rem}
+.card-body{padding:1.25rem 1.35rem}
+.card-date{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:.4rem}
+.card-topic{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:.6rem}
+.verse{background:var(--warm);border-radius:var(--r);padding:.75rem .9rem;margin-bottom:.7rem;border-left:3px solid var(--gold)}
+.verse-text{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:600;color:var(--ink-soft);line-height:1.5;font-style:italic}
+.verse-ref{font-size:.75rem;color:var(--gold);font-weight:600;margin-top:.3rem}
+.verse-te{font-size:.88rem;color:var(--ink-soft);margin-top:.35rem;line-height:1.65}
+.sender-tag{font-size:.7rem;color:var(--muted);margin-top:.5rem}
 
-/* ═══════════════ CARD ═══════════════ */
-.card {
-  break-inside:avoid;
-  background:var(--paper);
-  border:1px solid var(--border);
-  border-radius:var(--radius-lg);
-  margin-bottom:1.5rem;
-  overflow:hidden;
-  box-shadow:var(--shadow-card);
-  transition:box-shadow .25s ease;
-  animation:fadeUp .5s ease both;
-}
-.card:hover { box-shadow:var(--shadow-hover) }
-@keyframes fadeUp { from { opacity:0; transform:translateY(20px) } to { opacity:1; transform:translateY(0) } }
+/* SONGS PAGE */
+.songs-page{display:none}
+.songs-page.active{display:block}
+.devotionals-page{display:block}
+.devotionals-page.hidden{display:none}
 
-/* Card image */
-.card-image {
-  width:100%; aspect-ratio:16/10; object-fit:cover; display:block;
-  background:var(--warm-white);
-  cursor:pointer; transition:transform .3s ease;
-}
-.card-image:hover { transform:scale(1.02) }
-.card-image-placeholder {
-  width:100%; aspect-ratio:16/10;
-  background:linear-gradient(135deg, var(--warm-white), var(--gold-subtle));
-  display:flex; align-items:center; justify-content:center;
-  font-size:3rem; color:var(--gold-light);
-}
+.playlist-bar{background:var(--paper);border:1px solid var(--border);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.playlist-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.25rem;background:var(--gold);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;font-size:.85rem;transition:all .2s}
+.playlist-btn:hover{background:#a07e24}
+.song-list{display:flex;flex-direction:column;gap:.5rem}
+.song-item{display:flex;align-items:center;gap:.75rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--r);padding:.65rem .9rem;text-decoration:none;color:var(--ink);transition:all .2s}
+.song-item:hover{background:var(--warm);border-color:var(--gold-light)}
+.song-num{width:32px;height:32px;border-radius:50%;background:var(--gold-bg);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:var(--gold);flex-shrink:0}
+.song-info{flex:1;min-width:0}
+.song-title{font-size:.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-date{font-size:.7rem;color:var(--muted)}
+.play-icon-sm{width:28px;height:28px;background:#f00;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.play-icon-sm::after{content:'';width:0;height:0;border-left:8px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
 
-/* Card body */
-.card-body { padding:1.25rem 1.35rem }
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);cursor:pointer}
+.lb.on{display:flex;align-items:center;justify-content:center}
+.lb img{max-width:94vw;max-height:92vh;border-radius:var(--r)}
+.lb-x{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:#fff;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.1)}
+.lb-x:hover{background:rgba(255,255,255,.2)}
 
-.card-date {
-  font-size:.75rem; color:var(--muted); text-transform:uppercase;
-  letter-spacing:.06em; font-weight:600; margin-bottom:.5rem;
-}
-.card-topic {
-  font-family:'Playfair Display',serif;
-  font-size:1.15rem; font-weight:700; color:var(--ink);
-  line-height:1.3; margin-bottom:.75rem;
-}
+/* EMPTY */
+.empty{text-align:center;padding:4rem 1.5rem}
+.empty .icon{font-size:3rem;margin-bottom:1rem}
+.empty h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.5rem}
 
-/* Verse block */
-.verse-block {
-  background:var(--warm-white); border-radius:var(--radius);
-  padding:.85rem 1rem; margin-bottom:.85rem;
-  border-left:3px solid var(--gold);
-}
-.verse-text {
-  font-family:'Playfair Display',serif;
-  font-size:.95rem; font-weight:600; color:var(--ink-soft);
-  line-height:1.5; font-style:italic;
-}
-.verse-ref {
-  font-size:.75rem; color:var(--gold); font-weight:600;
-  margin-top:.35rem; font-style:normal;
-}
-.verse-telugu {
-  font-family:'Inter','Noto Sans Telugu',sans-serif;
-  font-size:.9rem; color:var(--ink-soft);
-  margin-top:.4rem; line-height:1.6; font-style:normal;
-}
+/* FOOTER */
+footer{text-align:center;padding:2rem 1.5rem 3rem;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border)}
 
-/* YouTube link */
-.yt-link {
-  display:flex; align-items:center; gap:.6rem;
-  text-decoration:none; color:var(--ink);
-  padding:.55rem .85rem; border-radius:var(--radius);
-  background:rgba(255,0,0,.04); border:1px solid rgba(255,0,0,.1);
-  transition:all .2s ease; font-size:.85rem; font-weight:500;
-}
-.yt-link:hover { background:rgba(255,0,0,.08); border-color:rgba(255,0,0,.2) }
-.yt-icon {
-  width:24px; height:24px; flex-shrink:0;
-  background:#f00; border-radius:50%; position:relative;
-  display:flex; align-items:center; justify-content:center;
-}
-.yt-icon::after {
-  content:''; display:block;
-  width:0; height:0;
-  border-left:8px solid #fff; border-top:5px solid transparent; border-bottom:5px solid transparent;
-  margin-left:2px;
-}
-
-/* ═══════════════ LIGHTBOX ═══════════════ */
-.lightbox { display:none; position:fixed; inset:0; z-index:200; background:rgba(0,0,0,.92); cursor:pointer; align-items:center; justify-content:center }
-.lightbox.active { display:flex }
-.lightbox img { max-width:94vw; max-height:92vh; border-radius:var(--radius); cursor:default }
-.lightbox-close { position:absolute; top:1.5rem; right:2rem; font-size:2rem; color:#fff; cursor:pointer; width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,.1); transition:background .2s }
-.lightbox-close:hover { background:rgba(255,255,255,.2) }
-
-/* ═══════════════ EMPTY STATE ═══════════════ */
-.empty-state { text-align:center; padding:5rem 1.5rem; columns:1 }
-.empty-state .icon { font-size:3rem; margin-bottom:1rem }
-.empty-state h2 { font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:.5rem; color:var(--ink) }
-.empty-state p { color:var(--muted); max-width:360px; margin:0 auto; font-size:.9rem }
-
-/* ═══════════════ FOOTER ═══════════════ */
-footer { text-align:center; padding:2rem 1.5rem 3rem; color:var(--muted); font-size:.75rem; border-top:1px solid var(--border) }
-
-/* ═══════════════ SCROLLBAR ═══════════════ */
-::-webkit-scrollbar { width:5px }
-::-webkit-scrollbar-track { background:transparent }
-::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px }
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <h1>Fellowship <span>in Jesus Christ</span></h1>
-    <p class="subtitle">Daily bread from the Word — English & Telugu</p>
-    <div class="status-bar">
-      <span class="status-dot" id="statusDot"></span>
-      <span id="statusText">Loading…</span>
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">✝️ Fellowship <span>in Jesus Christ</span></a>
+    <div class="nav-links">
+      <a href="#" class="nav-link active" onclick="showPage('devotionals')" data-page="devotionals">📖 Devotionals</a>
+      <a href="#" class="nav-link" onclick="showPage('songs')" data-page="songs">🎵 Songs</a>
     </div>
   </div>
-</header>
+</nav>
 
-<main>
-  <div class="day-grid" id="grid"></div>
-</main>
+<!-- DEVOTIONALS -->
+<div class="devotionals-page active" id="page-devotionals">
+  <header>
+    <h1>Daily <span>Bread</span></h1>
+    <p class="subtitle">English & Telugu — from the Word</p>
+    <div class="stats">
+      <span class="stat"><b id="stat-cards">0</b> devotionals</span>
+      <span class="stat"><b id="stat-songs">0</b> songs</span>
+    </div>
+  </header>
+  <main>
+    <div class="grid" id="grid"></div>
+  </main>
+</div>
+
+<!-- SONGS -->
+<div class="songs-page" id="page-songs">
+  <header>
+    <h1>Worship <span>Songs</span></h1>
+    <p class="subtitle">All YouTube songs shared in the fellowship</p>
+    <div class="stats"><span class="stat"><b id="stat-songs2">0</b> songs</span></div>
+  </header>
+  <main>
+    <div class="playlist-bar">
+      <span style="font-weight:600">▶️ Listen to all songs as a playlist:</span>
+      <a href="#" class="playlist-btn" id="playlist-link" target="_blank" rel="noopener">Open YouTube Playlist</a>
+    </div>
+    <div class="song-list" id="song-list"></div>
+  </main>
+</div>
 
 <footer>Made with ❤️ for family</footer>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close">&times;</span>
-</div>
+<div class="lb" id="lb"><span class="lb-x">&times;</span></div>
 
 <script>
-(function(){
-const grid = document.getElementById('grid');
-const sDot = document.getElementById('statusDot');
-const sText = document.getElementById('statusText');
-const lb = document.getElementById('lightbox');
-const DATA = 'messages.json';
-let lastTs = '';
+let DATA = {devotionals:[],songs:[]};
 
-// ── Lightbox ──
-lb.addEventListener('click', e => { if(e.target===lb||e.target.className==='lightbox-close'){ lb.classList.remove('active'); const i=lb.querySelector('img'); if(i)i.remove() }});
-document.addEventListener('keydown', e => { if(e.key==='Escape') lb.click() });
+async function load(){
+  try{
+    const r=await fetch('messages.json?t='+Date.now());
+    if(!r.ok)throw new Error(r.status);
+    DATA=await r.json();
+    renderDevotionals(DATA.devotionals||[]);
+    renderSongs(DATA.songs||[]);
+    document.getElementById('stat-cards').textContent=(DATA.devotionals||[]).length;
+    document.getElementById('stat-songs').textContent=(DATA.songs||[]).length;
+    document.getElementById('stat-songs2').textContent=(DATA.songs||[]).length;
+  }catch(e){console.error(e)}
+}
 
-window.openImage = function(src){
-  const img = document.createElement('img'); img.src=src; img.alt='';
-  lb.appendChild(img); lb.classList.add('active');
-};
+function showPage(p){
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  document.querySelector(`[data-page="${p}"]`).classList.add('active');
+  document.getElementById('page-devotionals').classList.toggle('hidden',p!=='devotionals');
+  document.getElementById('page-songs').classList.toggle('active',p==='songs');
+  if(p==='songs')buildPlaylist();
+}
 
-// ── Format time ──
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
 function fmtDate(iso){
-  if(!iso) return '';
-  const d = new Date(iso);
+  if(!iso)return'';
+  const d=new Date(iso);
   return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
 }
 
-// ── Render card ──
-function renderCard(doc, idx){
-  const c = document.createElement('div');
-  c.className = 'card';
-  c.style.animationDelay = `${Math.min(idx,30)*0.06}s`;
-
-  let imgHTML = '';
-  if(doc.image){
-    imgHTML = `<img class="card-image" src="${esc(doc.image)}" alt="Daily image" loading="lazy" onclick="openImage('${esc(doc.image)}')">`;
-  } else {
-    imgHTML = `<div class="card-image-placeholder">🕊️</div>`;
-  }
-
-  let bodyHTML = '';
-  bodyHTML += doc.date ? `<div class="card-date">${fmtDate(doc.date)}</div>` : '';
-  bodyHTML += doc.topic ? `<div class="card-topic">${esc(doc.topic)}</div>` : '';
-
-  // English verse
-  if(doc.verse_english){
-    bodyHTML += `<div class="verse-block"><div class="verse-text">"${esc(doc.verse_english)}"</div>`;
-    if(doc.verse_ref) bodyHTML += `<div class="verse-ref">— ${esc(doc.verse_ref)}</div>`;
-    bodyHTML += `</div>`;
-  }
-
-  // Telugu verse
-  if(doc.verse_telugu){
-    bodyHTML += `<div class="verse-block"><div class="verse-telugu">${esc(doc.verse_telugu)}</div></div>`;
-  }
-
-  // YouTube
-  if(doc.youtube_url){
-    bodyHTML += `<a class="yt-link" href="${esc(doc.youtube_url)}" target="_blank" rel="noopener"><span class="yt-icon"></span> ${esc(doc.youtube_title||'Watch worship song')}</a>`;
-  }
-
-  // Text fallback
-  if(!doc.verse_english && !doc.verse_telugu && doc.text){
-    bodyHTML += `<div class="verse-block"><div class="verse-text">${esc(doc.text)}</div></div>`;
-  }
-
-  c.innerHTML = imgHTML + `<div class="card-body">${bodyHTML}</div>`;
-  return c;
+// ── DEVOTIONALS ──
+function renderDevotionals(docs){
+  const grid=document.getElementById('grid');
+  if(!docs.length){grid.innerHTML='<div class="empty"><div class="icon">🕊️</div><h2>No devotionals yet</h2></div>';return}
+  const frag=document.createDocumentFragment();
+  docs.forEach((d,i)=>{
+    const c=document.createElement('div');c.className='card';c.style.animationDelay=`${Math.min(i,50)*0.04}s`;
+    let img=d.image?`<img src="${esc(d.image)}" alt="" loading="lazy" onclick="openImg('${esc(d.image)}')">`:`<div class="card-img-pl">🕊️</div>`;
+    let body='';
+    body+=d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:'';
+    body+=d.topic?`<div class="card-topic">${esc(d.topic)}</div>`:'';
+    if(d.verse_english)body+=`<div class="verse"><div class="verse-text">"${esc(d.verse_english)}"</div>${d.verse_ref?`<div class="verse-ref">— ${esc(d.verse_ref)}</div>`:''}</div>`;
+    if(d.verse_telugu)body+=`<div class="verse"><div class="verse-te">${esc(d.verse_telugu)}</div></div>`;
+    body+=d.sender?`<div class="sender-tag">— ${esc(d.sender)}</div>`:'';
+    c.innerHTML=img+`<div class="card-body">${body}</div>`;
+    frag.appendChild(c);
+  });
+  grid.innerHTML='';grid.appendChild(frag);
 }
 
-// ── Render all ──
-function render(documents){
-  grid.innerHTML = '';
-  if(!documents.length){
-    grid.className = 'empty-state';
-    grid.innerHTML = `<div class="icon">🕊️</div><h2>No devotionals yet</h2><p>Daily messages from the WhatsApp group will appear here as beautifully formatted cards.</p>`;
-    return;
-  }
-  grid.className = 'day-grid';
-  const frag = document.createDocumentFragment();
-  documents.forEach((d,i) => frag.appendChild(renderCard(d,i)));
-  grid.appendChild(frag);
+// ── SONGS ──
+function renderSongs(songs){
+  const list=document.getElementById('song-list');
+  if(!songs.length){list.innerHTML='<div class="empty"><div class="icon">🎵</div><h2>No songs yet</h2></div>';return}
+  list.innerHTML=songs.map((s,i)=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" class="song-item"><span class="song-num">${i+1}</span><span class="song-info"><span class="song-title">${esc(s.title)}</span><span class="song-date">${fmtDate(s.date)}</span></span><span class="play-icon-sm"></span></a>`).join('');
 }
 
-// ── Load ──
-async function load(){
-  try{
-    const r = await fetch(DATA+'?t='+Date.now());
-    if(!r.ok) throw new Error(r.status);
-    const data = await r.json();
-    const docs = data.documents||data.messages||[];
-    const ts = data.last_updated||'';
-    if(ts!==lastTs){ render(docs); lastTs=ts }
-    sDot.className = 'status-dot live';
-    sText.textContent = `${docs.length} devotional${docs.length!==1?'s':''}`;
-  }catch(e){
-    sDot.className = 'status-dot';
-    sText.textContent = 'Offline';
-    if(!grid.children.length||grid.className==='empty-state'){ render([]) }
+function buildPlaylist(){
+  const ids=DATA.songs.map(s=>{const m=s.url.match(/(?:v=|youtu\.be\/)([\w\-]+)/);return m?m[1]:null}).filter(Boolean);
+  if(ids.length){
+    const url='https://www.youtube.com/watch_videos?video_ids='+ids.join(',');
+    document.getElementById('playlist-link').href=url;
   }
 }
 
-function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML }
+// ── LIGHTBOX ──
+const lb=document.getElementById('lb');
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.className==='lb-x'){lb.classList.remove('on');const i=lb.querySelector('img');if(i)i.remove()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.click()});
+window.openImg=function(src){const i=document.createElement('img');i.src=src;lb.appendChild(i);lb.classList.add('on')};
 
 load();
-document.addEventListener('visibilitychange',()=>{ if(!document.hidden) load() });
-setInterval(load, 60000);
-})();
 </script>
 </body>
 </html>
