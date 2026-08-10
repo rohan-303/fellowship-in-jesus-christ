@@ -286,25 +286,45 @@ async function switchVersion(cid,ref,ver,btn){
 }
 
 // ── Language translator ──
+const transCache={};
+const transOrig={};
+
 async function translateVerse(cid,lang){
  if(!lang)return;
  const el=document.getElementById(cid+'-en');
  if(!el)return;
- 
  const vEl=el.querySelector('.v')||el.querySelector('.verse-hero');
  if(!vEl)return;
  const text=vEl.textContent;
  if(!text||text==='Loading…')return;
- 
+
+ // Save original if not already saved
+ if(!transOrig[cid]) transOrig[cid]=text;
+
+ // Check cache
+ const ck=cid+'|'+lang;
+ if(transCache[ck]){ vEl.textContent=transCache[ck]; document.getElementById(cid+'-lang').value=''; return }
+
  vEl.classList.add('loading');
  try{
-  const resp=await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&q=${encodeURIComponent(text.slice(0,500))}`);
+  // Clean text: strip verse numbers like [10], [11], strip * markers
+  let clean=text.replace(/\[\d+\]/g,'').replace(/\*/g,'').replace(/\s+/g,' ').trim().slice(0,800);
+  const resp=await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${lang}&dt=t&q=${encodeURIComponent(clean)}`);
   const data=await resp.json();
   const translated=data[0].map(p=>p[0]).join('');
+  transCache[ck]=translated;
   vEl.textContent=translated;
   vEl.classList.remove('loading');
-  // Reset select
-  document.getElementById(cid+'-lang').value='';
+  // Add revert button
+  const sel=document.getElementById(cid+'-lang');
+  if(sel)sel.value='';
+  if(!document.getElementById(cid+'-revert')){
+   const btn=document.createElement('button');
+   btn.id=cid+'-revert';btn.className='ctrl-btn';
+   btn.textContent='🔄 Original';btn.style.marginLeft='.3rem';
+   btn.onclick=function(){vEl.textContent=transOrig[cid];btn.remove();document.getElementById(cid+'-lang').value=''};
+   sel.parentElement.appendChild(btn);
+  }
  }catch(e){
   vEl.classList.remove('loading');
  }
