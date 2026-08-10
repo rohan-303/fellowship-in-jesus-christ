@@ -1,0 +1,28 @@
+{
+  "group_name": "Fellowship in Jesus Christ",
+  "last_updated": "2026-08-08T00:00:00Z",
+  "messages": [
+    {
+      "id": "sample-1",
+      "sender": "Dad",
+      "timestamp": "2026-08-07T08:30:00Z",
+      "text": "Good morning family! 🙏 Today's verse: 'The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you.' - Numbers 6:24-26"
+    },
+    {
+      "id": "sample-2",
+      "sender": "Mom",
+      "timestamp": "2026-08-07T09:15:00Z",
+      "text": "Amen! 🙌 Don't forget prayer meeting tonight at 7pm. Here's the worship song we'll be singing:",
+      "videoLinks": [
+        {"url": "https://youtu.be/example1", "platform": "YouTube", "title": "Way Maker - Leeland"}
+      ]
+    },
+    {
+      "id": "sample-3",
+      "sender": "Dad",
+      "timestamp": "2026-08-07T10:00:00Z",
+      "text": "Beautiful sunrise during my morning walk. God's creation is amazing! 🌅",
+      "images": ["https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800"]
+    }
+  ]
+}
