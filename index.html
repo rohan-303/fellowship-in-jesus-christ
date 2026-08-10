@@ -5,217 +5,202 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fellowship in Jesus Christ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream:#faf8f5; --paper:#fefdfb; --warm:#f6f4f0;
-  --gold:#b8942e; --gold-light:#d4b65a; --gold-bg:rgba(184,148,46,.07);
-  --ink:#1c1a16; --ink-soft:#3d3830; --muted:#78736a;
-  --border:rgba(0,0,0,.07); --r:6px; --rl:10px;
-  --shadow:0 1px 3px rgba(0,0,0,.04),0 4px 15px rgba(0,0,0,.03);
-  --shadow-h:0 2px 6px rgba(0,0,0,.06),0 8px 28px rgba(0,0,0,.05);
+  --bg:#f9f7f2; --card:#fffdf9; --warm:#f3efe7;
+  --gold:#b08830; --gold-light:#d4bc70; --gold-glow:rgba(176,136,48,.08);
+  --ink:#1e1b16; --soft:#4a4540; --muted:#8a847a;
+  --border:rgba(0,0,0,.06); --r:8px; --rl:14px;
+  --shadow:0 1px 4px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.03);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;min-height:100vh}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;min-height:100vh}
 
 /* NAV */
-nav{background:var(--paper);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;padding:0 1.5rem}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:2rem;height:56px}
-.nav-brand{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+nav{background:rgba(255,253,249,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;padding:0 1.5rem}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2rem;height:54px}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.15rem;color:var(--ink);text-decoration:none;white-space:nowrap;letter-spacing:-.01em}
 .nav-brand span{color:var(--gold)}
 .nav-links{display:flex;gap:.25rem;margin-left:auto}
-.nav-link{padding:.45rem 1rem;border-radius:999px;text-decoration:none;font-size:.85rem;font-weight:500;color:var(--muted);transition:all .2s}
-.nav-link:hover,.nav-link.active{background:var(--gold-bg);color:var(--gold)}
+.nav-link{padding:.4rem 1rem;border-radius:999px;text-decoration:none;font-size:.82rem;font-weight:500;color:var(--muted);transition:all .2s}
+.nav-link:hover,.nav-link.on{background:var(--gold-glow);color:var(--gold)}
 
 /* HEADER */
-header{text-align:center;padding:4rem 1.5rem 2.5rem;background:var(--paper);border-bottom:1px solid var(--border)}
-h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.15}
+header{text-align:center;padding:3.5rem 1.5rem 2rem}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--ink);letter-spacing:-.02em;line-height:1.1}
 h1 span{color:var(--gold)}
-.subtitle{color:var(--muted);font-size:.9rem;font-style:italic;margin:.5rem 0 0}
-.stats{display:inline-flex;gap:1.5rem;margin-top:1rem;font-size:.8rem;color:var(--muted)}
-.stat b{color:var(--ink);font-weight:600}
+.sub{color:var(--muted);font-size:.9rem;font-style:italic;margin:.4rem 0 0}
+.stats-row{display:inline-flex;gap:2rem;margin-top:.75rem;font-size:.78rem;color:var(--muted)}
+.stats-row b{font-weight:600;color:var(--soft)}
 
 /* MAIN */
-main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
-.section-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:1.5rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+main{max-width:1200px;margin:0 auto;padding:1.5rem 1.5rem 5rem}
+.grid{columns:3;column-gap:1.25rem}
+@media(max-width:1000px){.grid{columns:2}}
+@media(max-width:600px){.grid{columns:1}}
 
-/* CARD GRID */
-.grid{columns:2;column-gap:1.5rem}
-@media(max-width:720px){.grid{columns:1}}
-.card{break-inside:avoid;background:var(--paper);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:1.5rem;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .25s;animation:fadeUp .5s ease both}
-.card:hover{box-shadow:var(--shadow-h)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--warm);cursor:pointer;transition:transform .3s}
-.card img:hover{transform:scale(1.02)}
-.card-img-pl{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,var(--warm),var(--gold-bg));display:flex;align-items:center;justify-content:center;font-size:3rem}
-.card-body{padding:1.25rem 1.35rem}
-.card-date{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-bottom:.4rem}
-.card-topic{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:.6rem}
-.verse{background:var(--warm);border-radius:var(--r);padding:.75rem .9rem;margin-bottom:.7rem;border-left:3px solid var(--gold)}
-.verse-text{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:600;color:var(--ink-soft);line-height:1.5;font-style:italic}
-.verse-ref{font-size:.75rem;color:var(--gold);font-weight:600;margin-top:.3rem}
-.verse-te{font-size:.88rem;color:var(--ink-soft);margin-top:.35rem;line-height:1.65}
-.sender-tag{font-size:.7rem;color:var(--muted);margin-top:.5rem}
+.card{break-inside:avoid;background:var(--card);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:1.25rem;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .3s,transform .2s;animation:in .5s ease both}
+.card:hover{box-shadow:0 2px 8px rgba(0,0,0,.06),0 8px 28px rgba(0,0,0,.05);transform:translateY(-1px)}
+@keyframes in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* IMAGE */
+.card-img-wrap{position:relative;background:var(--warm);overflow:hidden;cursor:pointer}
+.card-img-wrap img{width:100%;max-height:420px;object-fit:contain;display:block;background:var(--warm);transition:transform .35s ease}
+.card-img-wrap:hover img{transform:scale(1.03)}
+
+/* TEXT-ONLY CARD — beautiful verse styling */
+.card-text-only{padding:1.6rem 1.5rem;background:linear-gradient(160deg,var(--card) 60%,var(--gold-glow));text-align:center}
+.card-text-only .verse-hero{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--soft);line-height:1.55;font-style:italic;max-width:90%;margin:0 auto}
+.card-text-only .verse-hero::before{content:'"'}
+.card-text-only .verse-hero::after{content:'"'}
+
+/* BODY */
+.card-body{padding:1.1rem 1.3rem 1.2rem}
+.card-meta{display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem}
+.card-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8a6820);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#fff;flex-shrink:0}
+.card-sender{font-size:.78rem;font-weight:600;color:var(--soft)}
+.card-date{font-size:.7rem;color:var(--muted);margin-left:auto}
+.card-topic{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
+.verse-block{background:var(--warm);border-radius:var(--r);padding:.7rem .85rem;margin-bottom:.5rem;border-left:3px solid var(--gold-light)}
+.verse-block .v{font-family:'Cormorant Garamond',serif;font-size:.9rem;font-weight:600;color:var(--soft);line-height:1.5;font-style:italic}
+.verse-block .ref{font-size:.7rem;color:var(--gold);font-weight:600;margin-top:.25rem}
+.verse-block .te{font-size:.84rem;color:var(--soft);margin-top:.2rem;line-height:1.6}
 
 /* SONGS PAGE */
-.songs-page{display:none}
-.songs-page.active{display:block}
-.devotionals-page{display:block}
-.devotionals-page.hidden{display:none}
-
-.playlist-bar{background:var(--paper);border:1px solid var(--border);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.playlist-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.25rem;background:var(--gold);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;font-size:.85rem;transition:all .2s}
-.playlist-btn:hover{background:#a07e24}
-.song-list{display:flex;flex-direction:column;gap:.5rem}
-.song-item{display:flex;align-items:center;gap:.75rem;background:var(--paper);border:1px solid var(--border);border-radius:var(--r);padding:.65rem .9rem;text-decoration:none;color:var(--ink);transition:all .2s}
-.song-item:hover{background:var(--warm);border-color:var(--gold-light)}
-.song-num{width:32px;height:32px;border-radius:50%;background:var(--gold-bg);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:var(--gold);flex-shrink:0}
-.song-info{flex:1;min-width:0}
-.song-title{font-size:.85rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.song-date{font-size:.7rem;color:var(--muted)}
-.play-icon-sm{width:28px;height:28px;background:#f00;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.play-icon-sm::after{content:'';width:0;height:0;border-left:8px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+.pg{display:none}.pg.on{display:block}
+.playlist-banner{background:var(--card);border:1px solid var(--border);border-radius:var(--rl);padding:1rem 1.4rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.playlist-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.15rem;background:var(--gold);color:#fff;border-radius:999px;text-decoration:none;font-weight:600;font-size:.8rem;border:none;cursor:pointer;transition:background .2s}
+.playlist-btn:hover{background:#8a6820}
+.song-grid{display:flex;flex-direction:column;gap:.35rem}
+.song-item{display:flex;align-items:center;gap:.6rem;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:.55rem .8rem;text-decoration:none;color:var(--ink);transition:all .2s}
+.song-item:hover{background:var(--gold-glow)}
+.song-n{width:26px;height:26px;border-radius:50%;background:var(--gold-glow);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:600;color:var(--gold);flex-shrink:0}
+.song-info{flex:1;min-width:0;display:flex;align-items:center;gap:.5rem}
+.song-info .t{font-size:.82rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-info .d{font-size:.68rem;color:var(--muted);white-space:nowrap}
+.song-play{width:24px;height:24px;background:#e00;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.song-play::after{content:'';width:0;height:0;border-left:7px solid #fff;border-top:4px solid transparent;border-bottom:4px solid transparent;margin-left:1px}
 
 /* LIGHTBOX */
-.lb{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);cursor:pointer}
+.lb{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.94);cursor:pointer}
 .lb.on{display:flex;align-items:center;justify-content:center}
-.lb img{max-width:94vw;max-height:92vh;border-radius:var(--r)}
-.lb-x{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:#fff;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.1)}
-.lb-x:hover{background:rgba(255,255,255,.2)}
+.lb img{max-width:95vw;max-height:93vh;object-fit:contain;border-radius:var(--r);cursor:default}
+.lb-x{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:#fff;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08)}
+.lb-x:hover{background:rgba(255,255,255,.18)}
 
-/* EMPTY */
-.empty{text-align:center;padding:4rem 1.5rem}
-.empty .icon{font-size:3rem;margin-bottom:1rem}
-.empty h2{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:.5rem}
+footer{text-align:center;padding:2rem 1.5rem 3rem;color:var(--muted);font-size:.7rem;border-top:1px solid var(--border)}
 
-/* FOOTER */
-footer{text-align:center;padding:2rem 1.5rem 3rem;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border)}
-
-::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-brand">✝️ Fellowship <span>in Jesus Christ</span></a>
-    <div class="nav-links">
-      <a href="#" class="nav-link active" onclick="showPage('devotionals')" data-page="devotionals">📖 Devotionals</a>
-      <a href="#" class="nav-link" onclick="showPage('songs')" data-page="songs">🎵 Songs</a>
-    </div>
+ <div class="nav-inner">
+  <a href="#" class="nav-brand">✝️ Fellowship <span>in Jesus Christ</span></a>
+  <div class="nav-links">
+   <a href="#" class="nav-link on" onclick="show('dev')" data-pg="dev">📖 Devotionals</a>
+   <a href="#" class="nav-link" onclick="show('songs')" data-pg="songs">🎵 Songs</a>
   </div>
+ </div>
 </nav>
 
-<!-- DEVOTIONALS -->
-<div class="devotionals-page active" id="page-devotionals">
-  <header>
-    <h1>Daily <span>Bread</span></h1>
-    <p class="subtitle">English & Telugu — from the Word</p>
-    <div class="stats">
-      <span class="stat"><b id="stat-cards">0</b> devotionals</span>
-      <span class="stat"><b id="stat-songs">0</b> songs</span>
-    </div>
-  </header>
-  <main>
-    <div class="grid" id="grid"></div>
-  </main>
+<div class="pg on" id="pg-dev">
+ <header>
+  <h1>Daily <span>Bread</span></h1>
+  <p class="sub">The Word in English & Telugu</p>
+  <div class="stats-row"><span><b id="nc">0</b> devotionals</span><span><b id="ni">0</b> with images</span></div>
+ </header>
+ <main><div class="grid" id="grid"></div></main>
 </div>
 
-<!-- SONGS -->
-<div class="songs-page" id="page-songs">
-  <header>
-    <h1>Worship <span>Songs</span></h1>
-    <p class="subtitle">All YouTube songs shared in the fellowship</p>
-    <div class="stats"><span class="stat"><b id="stat-songs2">0</b> songs</span></div>
-  </header>
-  <main>
-    <div class="playlist-bar">
-      <span style="font-weight:600">▶️ Listen to all songs as a playlist:</span>
-      <a href="#" class="playlist-btn" id="playlist-link" target="_blank" rel="noopener">Open YouTube Playlist</a>
-    </div>
-    <div class="song-list" id="song-list"></div>
-  </main>
+<div class="pg" id="pg-songs">
+ <header>
+  <h1>Worship <span>Songs</span></h1>
+  <p class="sub">Every YouTube song shared in the fellowship</p>
+ </header>
+ <main>
+  <div class="playlist-banner"><strong>▶ Listen to all:</strong><a href="#" class="playlist-btn" id="pl-btn" target="_blank">Open YouTube Playlist</a></div>
+  <div class="song-grid" id="songlist"></div>
+ </main>
 </div>
 
 <footer>Made with ❤️ for family</footer>
-
 <div class="lb" id="lb"><span class="lb-x">&times;</span></div>
 
 <script>
-let DATA = {devotionals:[],songs:[]};
-
+let D={devotionals:[],songs:[]};
 async function load(){
-  try{
-    const r=await fetch('messages.json?t='+Date.now());
-    if(!r.ok)throw new Error(r.status);
-    DATA=await r.json();
-    renderDevotionals(DATA.devotionals||[]);
-    renderSongs(DATA.songs||[]);
-    document.getElementById('stat-cards').textContent=(DATA.devotionals||[]).length;
-    document.getElementById('stat-songs').textContent=(DATA.songs||[]).length;
-    document.getElementById('stat-songs2').textContent=(DATA.songs||[]).length;
-  }catch(e){console.error(e)}
+ try{
+  const r=await fetch('messages.json?t='+Date.now());
+  if(!r.ok)throw new Error(r.status);
+  D=await r.json();D.devotionals=D.devotionals||[];D.songs=D.songs||[];
+  document.getElementById('nc').textContent=D.devotionals.length;
+  document.getElementById('ni').textContent=D.devotionals.filter(c=>c.image).length;
+  renderDevotionals();
+  renderSongs();
+ }catch(e){console.error(e)}
 }
 
-function showPage(p){
-  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
-  document.querySelector(`[data-page="${p}"]`).classList.add('active');
-  document.getElementById('page-devotionals').classList.toggle('hidden',p!=='devotionals');
-  document.getElementById('page-songs').classList.toggle('active',p==='songs');
-  if(p==='songs')buildPlaylist();
-}
+const esc=s=>{const d=document.createElement('div');d.textContent=s;return d.innerHTML};
+const fmt=d=>{if(!d)return'';const dt=new Date(d);return dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})};
+const ini=s=>(s||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
 
-function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-
-function fmtDate(iso){
-  if(!iso)return'';
-  const d=new Date(iso);
-  return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
-}
-
-// ── DEVOTIONALS ──
-function renderDevotionals(docs){
-  const grid=document.getElementById('grid');
-  if(!docs.length){grid.innerHTML='<div class="empty"><div class="icon">🕊️</div><h2>No devotionals yet</h2></div>';return}
-  const frag=document.createDocumentFragment();
-  docs.forEach((d,i)=>{
-    const c=document.createElement('div');c.className='card';c.style.animationDelay=`${Math.min(i,50)*0.04}s`;
-    let img=d.image?`<img src="${esc(d.image)}" alt="" loading="lazy" onclick="openImg('${esc(d.image)}')">`:`<div class="card-img-pl">🕊️</div>`;
-    let body='';
-    body+=d.date?`<div class="card-date">${fmtDate(d.date)}</div>`:'';
-    body+=d.topic?`<div class="card-topic">${esc(d.topic)}</div>`:'';
-    if(d.verse_english)body+=`<div class="verse"><div class="verse-text">"${esc(d.verse_english)}"</div>${d.verse_ref?`<div class="verse-ref">— ${esc(d.verse_ref)}</div>`:''}</div>`;
-    if(d.verse_telugu)body+=`<div class="verse"><div class="verse-te">${esc(d.verse_telugu)}</div></div>`;
-    body+=d.sender?`<div class="sender-tag">— ${esc(d.sender)}</div>`:'';
-    c.innerHTML=img+`<div class="card-body">${body}</div>`;
-    frag.appendChild(c);
-  });
-  grid.innerHTML='';grid.appendChild(frag);
-}
-
-// ── SONGS ──
-function renderSongs(songs){
-  const list=document.getElementById('song-list');
-  if(!songs.length){list.innerHTML='<div class="empty"><div class="icon">🎵</div><h2>No songs yet</h2></div>';return}
-  list.innerHTML=songs.map((s,i)=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" class="song-item"><span class="song-num">${i+1}</span><span class="song-info"><span class="song-title">${esc(s.title)}</span><span class="song-date">${fmtDate(s.date)}</span></span><span class="play-icon-sm"></span></a>`).join('');
-}
-
-function buildPlaylist(){
-  const ids=DATA.songs.map(s=>{const m=s.url.match(/(?:v=|youtu\.be\/)([\w\-]+)/);return m?m[1]:null}).filter(Boolean);
-  if(ids.length){
-    const url='https://www.youtube.com/watch_videos?video_ids='+ids.join(',');
-    document.getElementById('playlist-link').href=url;
+function renderDevotionals(){
+ const g=document.getElementById('grid');
+ if(!D.devotionals.length){g.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted)">🕊️<br>No devotionals yet</div>';return}
+ const frag=document.createDocumentFragment();
+ D.devotionals.forEach((c,i)=>{
+  const el=document.createElement('div');el.className='card';el.style.animationDelay=`${Math.min(i,60)*.03}s`;
+  let img='';
+  if(c.image){
+   img=`<div class="card-img-wrap" onclick="openImg('${esc(c.image)}')"><img src="${esc(c.image)}" alt="" loading="lazy"></div>`;
+   let b=`
+    ${c.date?`<div class="card-meta"><div class="card-avatar">${ini(c.sender)}</div><span class="card-sender">${esc(c.sender)}</span><span class="card-date">${fmt(c.date)}</span></div>`:''}
+    ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
+    ${c.verse_english?`<div class="verse-block"><div class="v">${esc(c.verse_english)}</div>${c.verse_ref?`<div class="ref">— ${esc(c.verse_ref)}</div>`:''}</div>`:''}
+    ${c.verse_telugu?`<div class="verse-block"><div class="te">${esc(c.verse_telugu)}</div></div>`:''}
+   `;
+   el.innerHTML=img+`<div class="card-body">${b}</div>`;
+  } else {
+   // Text-only card — beautiful verse display
+   let verse=c.verse_english||c.verse_telugu||'';
+   el.className='card card-text-only';
+   let b=`
+    ${c.date?`<div class="card-meta"><div class="card-avatar">${ini(c.sender)}</div><span class="card-sender">${esc(c.sender)}</span><span class="card-date">${fmt(c.date)}</span></div>`:''}
+    ${c.topic?`<div class="card-topic">${esc(c.topic)}</div>`:''}
+    ${verse?`<div class="verse-hero">${esc(verse.slice(0,200))}</div>`:''}
+   `;
+   el.innerHTML=b;
   }
+  frag.appendChild(el);
+ });
+ g.innerHTML='';g.appendChild(frag);
 }
 
-// ── LIGHTBOX ──
+function renderSongs(){
+ const l=document.getElementById('songlist');
+ if(!D.songs.length){l.innerHTML='<div style="text-align:center;padding:2rem;color:var(--muted)">No songs yet</div>';return}
+ l.innerHTML=D.songs.map((s,i)=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" class="song-item"><span class="song-n">${i+1}</span><span class="song-info"><span class="t">${esc(s.title||'Worship Song')}</span><span class="d">${fmt(s.date)}</span></span><span class="song-play"></span></a>`).join('');
+ // Build playlist
+ const ids=D.songs.map(s=>{const m=s.url.match(/(?:v=|youtu\.be\/)([\w\-]+)/);return m?m[1]:null}).filter(Boolean);
+ if(ids.length)document.getElementById('pl-btn').href='https://www.youtube.com/watch_videos?video_ids='+ids.join(',');
+}
+
+function show(p){
+ document.querySelectorAll('.pg').forEach(e=>e.classList.remove('on'));
+ document.getElementById('pg-'+p).classList.add('on');
+ document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('on',l.dataset.pg===p));
+}
+
 const lb=document.getElementById('lb');
 lb.addEventListener('click',e=>{if(e.target===lb||e.target.className==='lb-x'){lb.classList.remove('on');const i=lb.querySelector('img');if(i)i.remove()}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.click()});
-window.openImg=function(src){const i=document.createElement('img');i.src=src;lb.appendChild(i);lb.classList.add('on')};
+window.openImg=function(s){const i=document.createElement('img');i.src=s;lb.appendChild(i);lb.classList.add('on')};
 
 load();
 </script>
